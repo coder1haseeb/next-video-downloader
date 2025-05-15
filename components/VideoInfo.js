@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import FormatsList from './FormatsList';
 
-export default function VideoInfo({ data, videoUrl }) {
+export default function VideoInfo({ data, videoUrlz }) {
   const [activeTab, setActiveTab] = useState('video');
 
   // Helper function to format duration
@@ -98,3 +98,8 @@ export default function VideoInfo({ data, videoUrl }) {
     </div>
   );
 }
+
+
+
+
+
