@@ -19,9 +19,20 @@ export async function GET(req) {
     // Get video info with retries
     let info;
     let retries = 3;
+
+    const options = {
+      requestOptions: {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+          'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+          'Accept-Language': 'en-US,en;q=0.9'
+        }
+      }
+    };
+    
     while (retries > 0) {
       try {
-        info = await ytdl.getInfo(url);
+        info = await ytdl.getInfo(url, options);
         break;
       } catch (err) {
         if (err.message.includes('Could not extract functions') && retries > 1) {
@@ -47,10 +58,11 @@ export async function GET(req) {
     // Set appropriate file extension based on format
     const fileExtension = format.container || 'mp4';
     
-    // Stream the video
+    // Stream the video with the same options
     const stream = ytdl(url, { 
       quality: itag,
-      filter: format => format.itag.toString() === itag.toString()
+      filter: format => format.itag.toString() === itag.toString(),
+      ...options
     });
     
     return new Response(stream, {
