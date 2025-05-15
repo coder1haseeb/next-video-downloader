@@ -3,7 +3,6 @@ import ytdl from 'ytdl-core';
 export async function POST(req) {
   try {
     const { url } = await req.json();
-
     if (!url) {
       return new Response(JSON.stringify({ error: 'Video URL is required' }), {
         status: 400
@@ -20,8 +19,8 @@ export async function POST(req) {
     let info;
     let retries = 3;
     const retryDelay = 1000; // 1 second delay
+    
     const PROXY_URI = 'http://122.200.19.103';
-    const proxyOptions = { uri: PROXY_URI };
     const AGENT = ytdl.createProxyAgent(proxyOptions);
 
     const options = {
