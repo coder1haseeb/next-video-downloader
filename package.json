@@ -9,10 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@distube/ytdl-core": "^4.16.10",
+    "next": "15.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "ytdl-core": "npm:@distube/ytdl-core@^4.16.10",
-    "next": "15.3.2"
+    "ytdl-core": "npm:@distube/ytdl-core@^4.16.10"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.17",
