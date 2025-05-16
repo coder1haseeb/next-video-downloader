@@ -19,12 +19,8 @@ export async function POST(req) {
     let info;
     let retries = 3;
     const retryDelay = 1000; // 1 second delay
-    
-    const PROXY_URI = 'http://122.200.19.103';
-    const AGENT = ytdl.createProxyAgent(proxyOptions);
 
     const options = {
-      agent: AGENT,
       requestOptions: {
         headers: {
           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
